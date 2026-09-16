@@ -18,6 +18,7 @@ socket.on("draw:dot", (data) => {
 });
 
 socket.on("draw:history", (data) => {
+    setClearTime(data.secondsLeft);
     // clear canvas first
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -31,6 +32,7 @@ socket.on("draw:history", (data) => {
     }
 });
 
-socket.on("canvas:cleared", () => {
+socket.on("canvas:cleared", (data) => {
+    setClearTime(data.secondsLeft);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 });

@@ -1,5 +1,4 @@
 const canvas = document.getElementById("pad");
-const clearBtn = document.getElementById("clear-btn");
 
 // drawing pen
 const ctx = canvas.getContext("2d");   
@@ -58,8 +57,3 @@ canvas.addEventListener("pointermove", (event) => {
 // pen up
 canvas.addEventListener("pointerup", () => { drawing = false; });
 canvas.addEventListener("pointercancel", () => { drawing = false; });
-
-// clear canvas
-clearBtn.addEventListener("click", () => {
-    socket.emit("canvas:clear"); 
-});

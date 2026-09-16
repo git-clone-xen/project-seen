@@ -1,0 +1,4 @@
+#pad { 
+    background: #faf7f0; width: min(95vw, 80vh); 
+    touch-action: none; 
+}

@@ -1,0 +1,10 @@
+@keyframes gentleBlink {
+    0% { opacity: 1; }
+    50% { opacity: 0.3; }
+    100% { opacity: 1; }
+}
+
+.blink {
+    color: red;
+    animation: gentleBlink 1s infinite;
+}
