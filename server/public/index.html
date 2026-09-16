@@ -3,10 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project-Seenn</title>
+    <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+    <title>Project-Seen</title>
 </head>
 <body>
     <h1>Project Seen</h1>
-    <p>blabla</p>
+    <p id="status">connecting...</p>
+    <p id="welcome-msg"></p>
+
+    <script> 
+        const socket = io(); 
+        
+        // when user connects
+        socket.on("connect", () => {
+            document.getElementById("status").textContent = "connected!";
+        });
+
+        // welcome message
+        socket.on("welcome", (data) => {
+            document.getElementById("welcome-msg").textContent = data.msg;
+        });
+
+    </script>
 </body>
 </html>
