@@ -61,5 +61,5 @@ canvas.addEventListener("pointercancel", () => { drawing = false; });
 
 // clear canvas
 clearBtn.addEventListener("click", () => {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    socket.emit("canvas:clear"); 
 });

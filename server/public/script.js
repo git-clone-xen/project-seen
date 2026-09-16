@@ -9,14 +9,28 @@ socket.on("disconnect", () => {
     document.getElementById("status").textContent = "lost you for a second there.. reconnecting!";
 });
 
-socket.on("message:new", (data) => {
-    displayMsgList(data.text);
-});
-
 socket.on("draw:line", (data) => {
     drawLine(data.from, data.to);
 });
 
 socket.on("draw:dot", (data) => {
     drawDot(data);
+});
+
+socket.on("draw:history", (data) => {
+    // clear canvas first
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (const op of data.ops) {
+        if (op.type === "line") {
+            drawLine(op.from, op.to);
+        }
+        else if (op.type === "dot") {
+            drawDot(op.point);
+        }
+    }
+});
+
+socket.on("canvas:cleared", () => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 });
