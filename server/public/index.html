@@ -11,23 +11,11 @@
     <p id="status">connecting...</p>
     <p id="welcome-msg"></p>
 
-    <script> 
-        const socket = io(); 
-        
-        // when user connects
-        socket.on("connect", () => {
-            document.getElementById("status").textContent = "connected!";
-        });
+    <input id="message-input">
+    <button id="send-btn" >Send</button>
+    <ul id="message-list"></ul>
 
-        // welcome message
-        socket.on("welcome", (data) => {
-            document.getElementById("welcome-msg").textContent = data.msg;
-        });
+    <script src="script.js"></script>
 
-        socket.on("disconnect", () => {
-            document.getElementById("status").textContent = "lost you for a second there.. reconnecting!";
-        });
-
-    </script>
 </body>
 </html>
