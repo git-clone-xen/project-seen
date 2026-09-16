@@ -5,17 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
     <title>Project-Seen</title>
+    <style>
+        body { margin: 0; background: #e9e5dc; font-family: sans-serif; text-align: center; }
+        #pad { background: #faf7f0; width: min(95vw, 80vh); touch-action: none; }
+    </style>
 </head>
 <body>
     <h1>Project Seen</h1>
     <p id="status">connecting...</p>
-    <p id="welcome-msg"></p>
+    <canvas id="pad" width="1000" height="1000"></canvas>
+    <button id="clear-btn">clear</button>
 
-    <input id="message-input">
-    <button id="send-btn" >Send</button>
-    <ul id="message-list"></ul>
-
+    <script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
     <script src="script.js"></script>
-
+    <script src="drawing.js"></script>
 </body>
 </html>

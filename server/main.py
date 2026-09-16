@@ -22,7 +22,4 @@ async def handle_message_sent(sid, data):
     await sio.emit("message:new", {"text": data["text"]})
 
 # visiting / directs user to index.html
-app = socketio.ASGIApp(sio, static_files={
-    '/': 'public/index.html',
-    '/script.js': './script.js', 
-})
+app = socketio.ASGIApp(sio, static_files={"/": "public/"})

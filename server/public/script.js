@@ -5,12 +5,7 @@ const sendBtn = document.getElementById("send-btn");
 
 // when user connects
 socket.on("connect", () => {
-    document.getElementById("status").textContent = "connected!";
-});
-
-// welcome message
-socket.on("welcome", (data) => {
-    document.getElementById("welcome-msg").textContent = data.msg;
+    document.getElementById("status").textContent = "Welcome!";
 });
 
 socket.on("disconnect", () => {
@@ -26,14 +21,3 @@ socket.on("message:history", (data) => {
         displayMsgList(text);
     }
 });
-
-sendBtn.addEventListener("click", () => {
-    socket.emit("message:send", { text: input.value });
-    input.value = ""; // Clear input after sending
-});
-
-function displayMsgList(text) {
-    const item = document.createElement("li"); 
-    item.textContent = text; 
-    list.appendChild(item); 
-}
