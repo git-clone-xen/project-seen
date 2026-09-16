@@ -29,6 +29,7 @@ function drawLine(from, to) {
     ctx.stroke();
 }
 
+// draw one tiny dot from last point
 function drawDot(point) {
     ctx.beginPath();
     ctx.arc(point.x, point.y, 2, 0, Math.PI * 2);
@@ -42,6 +43,7 @@ canvas.addEventListener("pointerdown", (event) => {
     last = toCanvasPoint(event);
     canvas.setPointerCapture(event.pointerId);   // keep drawing even if you slide off the canvas
     drawDot(last);
+    socket.emit("draw:dot", last); 
 });
 
 // pen moves
@@ -49,6 +51,7 @@ canvas.addEventListener("pointermove", (event) => {
     if (!drawing) return;        // not pressed = just hovering, so do nothing
     const point = toCanvasPoint(event);
     drawLine(last, point);
+    socket.emit("draw:line", { from: last, to: point }); 
     last = point;
 });
 
@@ -57,6 +60,6 @@ canvas.addEventListener("pointerup", () => { drawing = false; });
 canvas.addEventListener("pointercancel", () => { drawing = false; });
 
 // clear canvas
-clearBtn.addEventListener("pointerdown", () => {
+clearBtn.addEventListener("click", () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 });

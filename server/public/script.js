@@ -1,7 +1,4 @@
 const socket = io(); 
-const list = document.getElementById("message-list");
-const input = document.getElementById("message-input");
-const sendBtn = document.getElementById("send-btn");
 
 // when user connects
 socket.on("connect", () => {
@@ -16,8 +13,10 @@ socket.on("message:new", (data) => {
     displayMsgList(data.text);
 });
 
-socket.on("message:history", (data) => {
-    for (const text of data.msgs) {
-        displayMsgList(text);
-    }
+socket.on("draw:line", (data) => {
+    drawLine(data.from, data.to);
+});
+
+socket.on("draw:dot", (data) => {
+    drawDot(data);
 });
