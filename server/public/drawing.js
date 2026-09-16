@@ -29,11 +29,19 @@ function drawLine(from, to) {
     ctx.stroke();
 }
 
+function drawDot(point) {
+    ctx.beginPath();
+    ctx.arc(point.x, point.y, 2, 0, Math.PI * 2);
+    ctx.fillStyle = "#2f2d2a";
+    ctx.fill();
+}
+
 // pen down
 canvas.addEventListener("pointerdown", (event) => {
     drawing = true;
     last = toCanvasPoint(event);
     canvas.setPointerCapture(event.pointerId);   // keep drawing even if you slide off the canvas
+    drawDot(last);
 });
 
 // pen moves
