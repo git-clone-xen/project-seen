@@ -24,6 +24,10 @@
             document.getElementById("welcome-msg").textContent = data.msg;
         });
 
+        socket.on("disconnect", () => {
+            document.getElementById("status").textContent = "lost you for a second there.. reconnecting!";
+        });
+
     </script>
 </body>
 </html>
