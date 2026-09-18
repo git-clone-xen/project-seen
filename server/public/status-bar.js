@@ -14,11 +14,15 @@ setInterval(() => {
     const minutes = Math.floor(secondsLeft / 60);
     const seconds = secondsLeft % 60;
 
-    if (secondsLeft <= 5 && secondsLeft > 0) {
+    // blink warning at 1min mark before clearing canvas
+    if (secondsLeft <= 60 && secondsLeft > 0) {
         clockTimer.classList.add("blink");
+        clockTimer.textContent = 
+        `Drawing pad will clear in ${minutes}:${String(seconds).padStart(2, '0')}`;
     } else {
         clockTimer.classList.remove("blink");
+        clockTimer.textContent = `A fresh page, a Fresh slate ✨`;
     }
 
-    clockTimer.textContent = 
-    `Cleaning up on asle Drawing Pad in ${minutes}:${String(seconds).padStart(2, '0')}`;}, 1000);
+   
+}, 1000);

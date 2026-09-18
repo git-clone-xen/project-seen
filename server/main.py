@@ -5,7 +5,7 @@ import time
 sio = socketio.AsyncServer(async_mode="asgi")
 
 canvas_ops = []
-CLEAR_INTERVAL = 60
+CLEAR_INTERVAL = 3600
 
 # environ - dictionary containing standard HTTP and connection metadata
 #  about incoming client connection
