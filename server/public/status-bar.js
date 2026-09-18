@@ -21,7 +21,7 @@ setInterval(() => {
         `Drawing pad will clear in ${minutes}:${String(seconds).padStart(2, '0')}`;
     } else {
         clockTimer.classList.remove("blink");
-        clockTimer.textContent = `A fresh page, a Fresh slate ✨`;
+        clockTimer.textContent = `A fresh page, a fresh slate ✨`;
     }
 
    
